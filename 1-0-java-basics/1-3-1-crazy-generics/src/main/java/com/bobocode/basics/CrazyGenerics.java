@@ -257,7 +257,13 @@ public class CrazyGenerics {
         public static void swap(List<?> elements, int i, int j) {
             Objects.checkIndex(i, elements.size());
             Objects.checkIndex(j, elements.size());
-            
+            swapInternal(elements, i, j);
+        }
+        
+        private static <T> void swapInternal(List<T> elements, int i, int j) {
+            T temp = elements.get(i);
+            elements.set(i, elements.get(j));
+            elements.set(j, temp);
         }
         
     }
